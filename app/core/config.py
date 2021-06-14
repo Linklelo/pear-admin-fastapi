@@ -5,7 +5,7 @@ from typing import List
 
 from loguru import logger
 from starlette.config import Config
-from starlette.datastructures import CommaSeparatedStrings, Secret
+from starlette.datastructures import CommaSeparatedStrings
 
 from app.core.logging import InterceptHandler
 
@@ -18,11 +18,15 @@ config = Config(".env")
 
 DEBUG: bool = config("DEBUG", cast=bool, default=False)
 
-DATABASE_URL: str = config("DB_CONNECTION", cast=str)
-MAX_CONNECTIONS_COUNT: int = config("MAX_CONNECTIONS_COUNT", cast=int, default=10)
-MIN_CONNECTIONS_COUNT: int = config("MIN_CONNECTIONS_COUNT", cast=int, default=10)
+HOST: str = config("HOST", cast=str)
+USERNAME: str = config("USERNAME", cast=str)
+PASSWORD: str = config("PASSWORD", cast=str)
+DATABASE: str = config("DATABASE", cast=str)
+PORT: str = config("PORT", cast=str)
 
-SECRET_KEY: Secret = config("SECRET_KEY", cast=Secret)
+DATABASE_URL =  "mysql+pymysql://{username}:{password}@{host}:{port}/{db}?charset=utf8".format(username=USERNAME,password=PASSWORD, host=HOST,port=PORT, db=DATABASE)
+
+SECRET_KEY: str = config("SECRET_KEY", cast=str)
 
 PROJECT_NAME: str = config("PROJECT_NAME", default="FastAPI example application")
 ALLOWED_HOSTS: List[str] = config(
