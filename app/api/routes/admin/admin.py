@@ -44,7 +44,7 @@ async def login(request: Request, username: str=Form(None), password: str=Form(N
         response = JSONResponse(content={"code":1, "msg":"登录成功", "success":True})
         manager.set_cookie(response, access_token)
         return response
-
+    login_log(request, username, uid=user.id, is_access=False)
     return {"code":0, "msg":"用户名或密码错误", "success":False}
 
 @router.get("/login")
