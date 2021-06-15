@@ -1,4 +1,4 @@
-from app.services.power import batch_remove, disable_status, enable_status, get_power_by_id, get_power_dict, remove_power, save_power, select_parent, update_power
+from app.services.admin.power import batch_remove, disable_status, enable_status, get_power_by_id, get_power_dict, remove_power, save_power, select_parent, update_power
 from fastapi_sqlalchemy import db
 from fastapi.templating import Jinja2Templates
 from app.api.depends.manager import manager

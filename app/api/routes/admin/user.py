@@ -1,5 +1,5 @@
 from app.models.admin import Role
-from app.services.user import add_user, add_user_role, batch_remove, delete_by_id, enable_status, get_user_by_id, get_user_by_name, get_user_data_dict, is_user_exists, update_user, update_user_role, disable_status
+from app.services.admin.user import add_user, add_user_role, batch_remove, delete_by_id, enable_status, get_user_by_id, get_user_by_name, get_user_data_dict, is_user_exists, update_user, update_user_role, disable_status
 from fastapi import APIRouter, Request, Depends
 from fastapi.templating import Jinja2Templates
 from app.api.depends.manager import manager
