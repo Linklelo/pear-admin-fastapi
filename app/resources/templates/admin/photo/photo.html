@@ -13,13 +13,13 @@
 	</div>
 
 	<script type="text/html" id="toolbar">
-        {% if authorize("admin:file:add") %}
+        {% if authorize("admin:file:add", current_user) %}
 		<button class="pear-btn pear-btn-primary pear-btn-sm" lay-event="add">
 			<i class="layui-icon layui-icon-add-1"></i>
 			新增
 		</button>
         {% endif %}
-        {% if authorize("admin:file:delete") %}
+        {% if authorize("admin:file:delete", current_user) %}
 		<button class="pear-btn pear-btn-sm" lay-event="batchRemove">
 			<i class="layui-icon layui-icon-delete"></i>
 			删除
@@ -28,7 +28,7 @@
 	</script>
 
 	<script type="text/html" id="user-bar">
-        {% if authorize("admin:file:delete") %}
+        {% if authorize("admin:file:delete", current_user) %}
 		<button class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="layui-icon layui-icon-delete"></i></button>
 	    {% endif %}
     </script>
@@ -202,7 +202,7 @@
             layer.close(index);
             let loading = layer.load();
             $.ajax({
-                url:"{{ url_for('adminFile.batchRemove') }}",
+                url:"/admin/file/batchRemove",
                 data:{ids:ids},
                 dataType: 'json',
                 type: 'POST',
@@ -260,3 +260,4 @@
 
 })
     </script>
+</body>

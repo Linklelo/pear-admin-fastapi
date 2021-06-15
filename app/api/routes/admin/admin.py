@@ -3,7 +3,7 @@ from fastapi.responses import JSONResponse
 from fastapi.templating import Jinja2Templates
 from app.api.depends.manager import manager
 from app.api.depends.mem_session import mem_session
-from app.services.admin.index import get_captcha, make_menu_tree
+from app.services.admin.index import add_auth_session, get_captcha, make_menu_tree
 from fastapi_sqlalchemy import db
 from app.models.admin import User
 from datetime import timedelta
@@ -36,6 +36,7 @@ async def login(request: Request, username: str=Form(None), password: str=Form(N
 
     if username == user.username and user.validate_password(password):
         login_log(request, username, uid=user.id, is_access=True)
+        add_auth_session(user)
         access_token = manager.create_access_token(
             data=dict(sub=username),
             expires=timedelta(hours=1.0)

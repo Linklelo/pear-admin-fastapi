@@ -38,13 +38,13 @@
 </body>
 
 <script type="text/html" id="role-toolbar">
-    {% if authorize("admin:role:add") %}
+    {% if authorize("admin:role:add", current_user) %}
     <button class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
         <i class="layui-icon layui-icon-add-1"></i>
         新增
     </button>
     {% endif %}
-    {% if authorize("admin:role:remove") %}
+    {% if authorize("admin:role:remove", current_user) %}
     <button class="pear-btn pear-btn-md" lay-event="batchRemove">
         <i class="layui-icon layui-icon-delete"></i>
         删除
@@ -53,15 +53,15 @@
 </script>
 
 <script type="text/html" id="role-bar">
-    {% if authorize("admin:role:edit") %}
+    {% if authorize("admin:role:edit", current_user) %}
     <button  class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>
     </button>
     {% endif %}
-    {% if authorize("admin:role:power") %}
+    {% if authorize("admin:role:power", current_user) %}
     <button class="pear-btn pear-btn-warming pear-btn-sm" lay-event="power"><i class="layui-icon layui-icon-vercode"></i>
     </button>
     {% endif %}
-    {% if authorize("admin:role:remove") %}
+    {% if authorize("admin:role:remove", current_user) %}
     <button  class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="layui-icon layui-icon-delete"></i>
     </button>
 {% endif %}
@@ -85,7 +85,7 @@
 
         let cols = [
             [
-                {% if authorize("admin:role:remove") %}
+                {% if authorize("admin:role:remove", current_user) %}
                 {type: 'checkbox'},
                 {% endif %}
                 {title: '角色名', field: 'roleName', align: 'center', width: 100},

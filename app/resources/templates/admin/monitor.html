@@ -29,13 +29,13 @@
                             <div class="layui-col-md6 layui-col-sm6 layui-col-xs6">
                                 <div class="pear-card2">
                                     <div class="title">空闲率</div>
-                                    <div class="count pear-text"  ></div>
+                                    <div class="count pear-text" >{{ 100.0 - cpus_percent }}%</div>
                                 </div>
                             </div>
                             <div class="layui-col-md6 layui-col-sm6 layui-col-xs6">
                                 <div class="pear-card2">
                                     <div class="title">等待率</div>
-                                    <div class="count pear-text"></div>
+                                    <div class="count pear-text">{{ cpus_idle }}%</div>
                                 </div>
                             </div>
                             <div class="layui-col-md6 layui-col-sm6 layui-col-xs6">

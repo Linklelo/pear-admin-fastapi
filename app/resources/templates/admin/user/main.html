@@ -49,13 +49,13 @@
 </body>
 
 <script type="text/html" id="user-toolbar">
-    {% if authorize("admin:user:add") %}
+    {% if authorize("admin:user:add", current_user) %}
     <button class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
         <i class="pear-icon pear-icon-add"></i>
         新增
     </button>
     {% endif %}
-      {% if authorize("admin:user:remove") %}
+      {% if authorize("admin:user:remove", current_user) %}
     <button class="pear-btn pear-btn-md" lay-event="batchRemove">
         <i class="pear-icon pear-icon-ashbin"></i>
         删除
@@ -64,11 +64,11 @@
 </script>
 
 <script type="text/html" id="user-bar">
-     {% if authorize("admin:user:edit") %}
+     {% if authorize("admin:user:edit", current_user) %}
     <button  class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i class="pear-icon pear-icon-edit"></i>
     </button>
      {% endif %}
-      {% if authorize("admin:user:remove") %}
+      {% if authorize("admin:user:remove", current_user) %}
     <button  class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="pear-icon pear-icon-ashbin"></i>
     </button>
 {% endif %}
@@ -98,7 +98,7 @@
 
         let cols = [
             [
-                 {% if authorize("admin:user:remove") %}
+                 {% if authorize("admin:user:remove", current_user) %}
                 {type: 'checkbox'},
                 {% endif %}
                 {title: '姓名', field: 'realname', align: 'center', width: 110},
