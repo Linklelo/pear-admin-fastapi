@@ -12,6 +12,8 @@
   [预 览](http://flask.pearadmin.com)   |   [官 网](http://www.pearadmin.com/)   |   [群聊](https://jq.qq.com/?_wv=1027&k=5OdSmve)   |   [社区](http://forum.pearadmin.com/)
 
 ![](readmes/home.png)
+  
+</div>
 
 #### 项目简介
 >Pear Admin FastAPI 基于 FastAPI  的后台管理系统，拥抱应用广泛的python语言，通过使用本系统，即可快速构建你的功能业务
