@@ -23,7 +23,7 @@ class UserSchema(Schema):
 
 
 def get_user_data(page, limit, filters):
-    user = db.session.query(User).filter(and_(*[getattr(User, k).like(v) for k, v in filters.items()])).offset(page-1).limit(limit).all()
+    user = db.session.query(User).filter(and_(*[getattr(User, k).like(v) for k, v in filters.items()])).offset((page-1)*limit).limit(limit).all()
     count = db.session.query(User).count()
     return user, count
 

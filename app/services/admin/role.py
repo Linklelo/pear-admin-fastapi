@@ -30,7 +30,7 @@ class PowerSchema(Schema):  # 序列化类
 
 # 获取角色对象
 def get_role_data(page, limit, filters):
-    role = db.session.query(Role).filter(and_(*[getattr(Role, k).like(v) for k, v in filters.items()])).offset(page-1).limit(limit).all()
+    role = db.session.query(Role).filter(and_(*[getattr(Role, k).like(v) for k, v in filters.items()])).offset((page-1)*limit).limit(limit).all()
     count = db.session.query(Role).count()
     return role, count
 

@@ -38,7 +38,7 @@ class LogSchema(Schema):  # 序列化类
 
 @router.get("/loginLog")
 async def getLoginLog(page: int, limit: int, user=Depends(manager)):
-    log =  db.session.query(AdminLog).filter_by(url = '/admin/login').order_by(desc(AdminLog.create_time)).offset(page-1).limit(limit).all()
+    log =  db.session.query(AdminLog).filter_by(url = '/admin/login').order_by(desc(AdminLog.create_time)).offset((page-1)*limit).limit(limit).all()
     count = db.session.query(AdminLog).filter_by(url = '/admin/login').count()
     role_schema = LogSchema(many=True)
     output = role_schema.dump(log)
@@ -58,7 +58,7 @@ async def getLoginLog(page: int, limit: int, user=Depends(manager)):
 
 @router.get("/operateLog")
 async def getLoginLog(page: int, limit: int, user=Depends(manager)):
-    log =  db.session.query(AdminLog).filter(AdminLog.url != '/admin/login').order_by(desc(AdminLog.create_time)).offset(page-1).limit(limit).all()
+    log =  db.session.query(AdminLog).filter(AdminLog.url != '/admin/login').order_by(desc(AdminLog.create_time)).offset((page-1)*limit).limit(limit).all()
     count = db.session.query(AdminLog).filter(AdminLog.url != '/admin/login').count()
     role_schema = LogSchema(many=True)
     output = role_schema.dump(log)

@@ -19,7 +19,7 @@ class PhotoSchema(Schema):
 
 
 def get_photo(page, limit):
-    photo = db.session.query(Photo).order_by(desc(Photo.create_time)).offset(page-1).limit(limit).all()
+    photo = db.session.query(Photo).order_by(desc(Photo.create_time)).offset((page-1)*limit).limit(limit).all()
     count = db.session.query(Photo).count()
     role_schema = PhotoSchema(many=True)
     output = role_schema.dump(photo)
